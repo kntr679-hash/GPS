@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>GPS JSON API</title>
+</head>
+<body>
+<pre id="result"></pre>
+
+<script>
+window.onload = () => {
+    navigator.geolocation.getCurrentPosition(async (pos) => {
+        const lat = pos.coords.latitude;
+        const lon = pos.coords.longitude;
+
+        const result = {
+            latitude: lat,
+            longitude: lon,
+            accuracy: pos.coords.accuracy,
+            timestamp: pos.timestamp
+        };
+
+        // JSONとして返す
+        document.body.innerText = JSON.stringify(result, null, 2);
+    });
+};
+</script>
+</body>
+</html>
